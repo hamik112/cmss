@@ -1,0 +1,138 @@
+@import "variables";
+@import "mixins";
+@import url("https://fonts.googleapis.com/css?family=Merienda+One|Ubuntu:300,400,500");
+
+@import "backend-frontend-shared";
+
+html {
+  margin-top: $sce_topbar_height;
+}
+
+body, html {
+  position: relative;
+}
+
+*[contenteditable="true"] {
+  /*border: 1px dotted transparent;*/
+  @include transition();
+}
+
+*[contenteditable="true"]:hover,
+.sce_inline_editor.cke_focus {
+  /*border: 1px dotted $blue;*/
+}
+
+.sce-topbar {
+  position: fixed;
+  z-index: 10;
+  top: 0px;
+  border-bottom: 1px solid $dark-blue;
+}
+
+
+.sce_inline_editor,
+.sce_editor{
+  & {
+    border: 1px dotted transparent;
+    @include transition();
+    outline: 0;
+  }
+
+  &:hover {
+    border: 1px dotted $blue;
+  }
+}
+
+.sce_type_short {
+  .sce_inline_editor,
+  .sce_editor {
+    display: inline-block;
+  }
+}
+
+.sce_edit_button {
+  display: inline-block;
+  margin-top: 5px;
+  background: $blue;
+  /*padding: 0.625rem 1rem 0.625rem 1rem;*/
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  @include transition();
+}
+
+.sce_edit_button:hover {
+  text-decoration: none;
+  background: lighten($blue, 10%);
+  color: #fff;
+}
+
+.sce_edit_button_small {
+  text-decoration: none;
+  background: none;
+  color: $blue;
+}
+
+.sce_edit_button_small:hover {
+  text-decoration: none;
+  color: lighten($blue, 10%);
+}
+
+.sce_loop_container {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.sce_loop_container li.placeholder {
+  position: relative;
+  /*border-bottom: 2px dotted $blue;*/
+  border: 2px dotted $blue;
+  padding: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+ol.sce_loop_container li.placeholder:before {
+  position: absolute;
+}
+
+.sce_loop_header {
+  & {
+    font-size: 0.8em;
+    border-top: 4px solid $blue;
+    color: #fff;
+    clear: both;
+  }
+
+  .sce_row_number,
+  .sce_add_new_row,
+  .sce_delete_row {
+    & {
+      color: #fff;
+      background: $blue;
+      padding: 6px 10px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .fa-spin {
+      display: none;
+    }
+  }
+
+  .sce_add_new_row,
+  .sce_delete_row {
+    float: right;
+    margin-left: 10px;
+  }
+}
